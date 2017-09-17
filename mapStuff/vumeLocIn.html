@@ -7,7 +7,8 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 40%;
+        width:40%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -49,16 +50,16 @@
     authDomain: "hot-spot-40dff.firebaseapp.com",
     databaseURL: "https://hot-spot-40dff.firebaseio.com",
     projectId: "hot-spot-40dff",
-    storageBucket: "",
+    storageBucket: "hot-spot-40dff.appspot.com",
     messagingSenderId: "1018402745301"
   };
   firebase.initializeApp(config);
 </script>
   </head>
-  
-    
-  
-  
+
+
+
+
 
   <body>
 <!--   floating panel can go where ever -->
@@ -67,22 +68,74 @@
       <button onclick="writeUserData()">Mumps</button>
       <div id="slider"></div><input type="text" id="amount" readonly style="border:0; width:100%; height:10%">
     </div>-->
+
     <div id="map"></div>
+    <progress value="0" max="100" id="uploader">0</progress>
+  <input type="file" value="upload" id="fileButton"/>
     <script>
 
       var map, heatmap, heatmap2;
 
+
+      //
+    var uploader = document.getElementById("uploader");
+    var fileButton = document.getElementById("fileButton");
+
+    fileButton.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+
+      var storageRef = firebase.storage().ref('sweet_gifs/' + file.name);
+
+      var task = storageRef.put(file);
+
+      task.on('state_changed',
+
+        function progress(snapshot){
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploader.value = percentage;
+        },
+
+        function error(err) {
+
+        },
+
+        function complete(){
+
+//           firebase.database().ref().push().set({
+//             "lat": lat,
+//             "long": longi,
+//             "url":storageRef.getDownloadURL()
+//           });
+
+          storageRef.getDownloadURL().then(function(url) {
+
+          firebase.database().ref().push().set({
+            "lat": lat,
+            "long": longi,
+            "url":url
+          });
+}).catch(function(error) {
+  // Handle any errors
+});
+
+        }
+        );
+    });
+    //
+      var lat = 38.9424;
+      var longi = -92.3277;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: {lat: 38.9424, lng: -92.3277}
         });
-        
+
         var myLatLng = {lat: 38.9434, lng: -92.3287};
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          title: 'Hello World!'
+          title: 'Hello World!',
+          icon: 'oPin3.png'
         });
         var customMapTypeId = 'custom_style';
         var customMapType = new google.maps.StyledMapType([
@@ -108,14 +161,16 @@
 
 		map.mapTypes.set(customMapTypeId, customMapType);
 		map.setMapTypeId(customMapTypeId);
-        
+
         google.maps.event.addListener(marker, 'click', function() {console.log("~~~");
-        
+
         });
-        
+
         google.maps.event.addListener(map, 'click', function( event ){
         marker.setMap(null);
         myLatLng = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+        lat = event.latLng.lat();
+        longi = event.latLng.lng();
          marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
@@ -128,8 +183,8 @@
     "long": event.latLng.lng()
   }); *
 });
-		
-		
+
+
 		/*var commentsRef = firebase.database().ref();
 commentsRef.on('child_added', function(data) {
 console.log("----"+data.val().lat);
@@ -139,15 +194,15 @@ console.log("----"+data.val().lat);
           map: map,
           title: 'Hello World!'
         });
-        
-        
+
+
 });*/
-        
+
       }
-      
+
     var lng = [];
-	  
-	  
+
+
 	  function writeUserData() {
   firebase.database().ref('users/').set({
     "lat": 38.9434,
