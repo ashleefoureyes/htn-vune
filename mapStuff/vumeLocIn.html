@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Planet Vune</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+
+<head>
+  <meta charset="utf-8">
+  <title>Planet Vune</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 400px;
-        width:100%;
-        text-align: center;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel {
-        background-color: #fff;
-        border: 1px solid #999;
-        left: 25%;
-        padding: 5px;
-        position: absolute;
-        top: 10px;
-        z-index: 5;
-      }
-    </style>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    #map {
+      height: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    /* Optional: Makes the sample page fill the window. */
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #floating-panel {
+      position: absolute;
+      top: 10px;
+      left: 25%;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+      text-align: center;
+      font-family: 'Roboto', 'sans-serif';
+      line-height: 30px;
+      padding-left: 10px;
+    }
+
+    #floating-panel {
+      background-color: #fff;
+      border: 1px solid #999;
+      left: 25%;
+      padding: 5px;
+      position: absolute;
+      top: 10px;
+      z-index: 5;
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDma41hyffvR2mc7EGxmSvPFnmuHppTW2k",
-    authDomain: "hot-spot-40dff.firebaseapp.com",
-    databaseURL: "https://hot-spot-40dff.firebaseio.com",
-    projectId: "hot-spot-40dff",
-    storageBucket: "hot-spot-40dff.appspot.com",
-    messagingSenderId: "1018402745301"
-  };
-  firebase.initializeApp(config);
-</script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDma41hyffvR2mc7EGxmSvPFnmuHppTW2k",
+      authDomain: "hot-spot-40dff.firebaseapp.com",
+      databaseURL: "https://hot-spot-40dff.firebaseio.com",
+      projectId: "hot-spot-40dff",
+      storageBucket: "hot-spot-40dff.appspot.com",
+      messagingSenderId: "1018402745301"
+    };
+    firebase.initializeApp(config);
+  </script>
 
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>Contribute</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  </head>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
 
-
-
-
-
-  <body class='teal lighten-5'>
+<body class='teal lighten-5'>
   <nav class="green lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Planet Vune</a>
       <ul class="right hide-on-med-and-down">
-<!--         <li><input id="search"><i class="material-icons">search</i></li> -->
+        
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -84,174 +87,137 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-<!--   floating panel can go where ever -->
-    <!--<div id="floating-panel">
-      <button onclick="changeRadius()">Crime</button>
-      <button onclick="writeUserData()">Mumps</button>
-      <div id="slider"></div><input type="text" id="amount" readonly style="border:0; width:100%; height:10%">
-    </div>-->
 
-<div class="section" id="index-banner">
-
+  <div class="section" id="index-banner">
     <div class="white z-depth-1 container" style='padding: 2% 2% 2% 2%;'>
       <div class="row center-align">
-      <div id="map"></div>
+        <div id="map"></div>
       </div>
       <div class="row">
-    <progress value="0" max="100" id="uploader">0</progress>
-  <input type="file" value="upload" id="fileButton"/>
+        <progress value="0" max="100" id="uploader">0</progress>
+        <input type="file" value="upload" id="fileButton" />
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-    <script>
-
-      var map, heatmap, heatmap2;
-
-
-      //
+  <script>
+    var map, heatmap, heatmap2;
     var uploader = document.getElementById("uploader");
     var fileButton = document.getElementById("fileButton");
 
-    fileButton.addEventListener('change', function(e) {
+    fileButton.addEventListener('change', function (e) {
       var file = e.target.files[0];
-
-//       if(file.size >= 50000000){
-//
-//       }
-
       var storageRef = firebase.storage().ref('sweet_gifs/' + file.name);
-
       var task = storageRef.put(file);
-
       task.on('state_changed',
-
-        function progress(snapshot){
+        function progress(snapshot) {
           var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           uploader.value = percentage;
         },
-
         function error(err) {
           alert("Error");
 
         },
-
-        function complete(){
-
-//           firebase.database().ref().push().set({
-//             "lat": lat,
-//             "long": longi,
-//             "url":storageRef.getDownloadURL()
-//           });
-
-          storageRef.getDownloadURL().then(function(url) {
-
-          firebase.database().ref().push().set({
-            "lat": lat,
-            "long": longi,
-            "url":url
+        function complete() {
+          storageRef.getDownloadURL().then(function (url) {
+            firebase.database().ref().push().set({
+              "lat": lat,
+              "long": longi,
+              "url": url
+            });
+          }).catch(function (error) {
+            // Handle any errors
+            alert("Error");
           });
-
-
-
-}).catch(function(error) {
-  // Handle any errors
-  alert("Error");
-});
-alert("Done uploading, click Planet Vune");
+          alert("Done uploading, click Planet Vune");
         }
-        );
+      );
     });
-    //
-      var lat = 38.9424;
-      var longi = -92.3277;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
-          center: {lat: 38.9424, lng: -92.3277}
-        });
 
-        var myLatLng = {lat: 38.9434, lng: -92.3287};
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!',
-          icon: 'oPin3.png'
-        });
-        var customMapTypeId = 'custom_style';
-        var customMapType = new google.maps.StyledMapType([
-		{
-			stylers: [
-				{hue: '#81F9FB'},
-				{visibility: 'simplified'},
-				{gamma: 0.3},
-				{weight: 0.20}
-			]
-		},
-		{
-			elementType: 'labels',
-			stylers: [{visibility: 'on'}]
-		},
-		{
-			featureType: 'water',
-			stylers: [{color: '#346FFF'}]
-		}
-		], {
-			name: 'Trippy'
-		});
+    var lat = 38.9424;
+    var longi = -92.3277;
 
-		map.mapTypes.set(customMapTypeId, customMapType);
-		map.setMapTypeId(customMapTypeId);
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: {
+          lat: 38.9424,
+          lng: -92.3277
+        }
+      });
 
-        google.maps.event.addListener(marker, 'click', function() {console.log("~~~");
+      var myLatLng = {
+        lat: 38.9434,
+        lng: -92.3287
+      };
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!',
+        icon: 'oPin3.png'
+      });
+      var customMapTypeId = 'custom_style';
+      var customMapType = new google.maps.StyledMapType([{
+          stylers: [{
+              hue: '#81F9FB'
+            },
+            {
+              visibility: 'simplified'
+            },
+            {
+              gamma: 0.3
+            },
+            {
+              weight: 0.20
+            }
+          ]
+        },
+        {
+          elementType: 'labels',
+          stylers: [{
+            visibility: 'on'
+          }]
+        },
+        {
+          featureType: 'water',
+          stylers: [{
+            color: '#346FFF'
+          }]
+        }
+      ], {
+        name: 'Trippy'
+      });
 
-        });
+      map.mapTypes.set(customMapTypeId, customMapType);
+      map.setMapTypeId(customMapTypeId);
 
-        google.maps.event.addListener(map, 'click', function( event ){
+      google.maps.event.addListener(marker, 'click', function () {
+        console.log("~~~");
+      });
+
+      google.maps.event.addListener(map, 'click', function (event) {
         marker.setMap(null);
-        myLatLng = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+        myLatLng = {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng()
+        };
         lat = event.latLng.lat();
         longi = event.latLng.lng();
-         marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           title: 'Hello World!',
           icon: 'oPin3.png'
         });
-        });
-        /*firebase.database().ref().push().set({
-    "lat": event.latLng.lat(),
-    "long": event.latLng.lng()
-  }); *
-});
+      });
+    }
 
-
-		/*var commentsRef = firebase.database().ref();
-commentsRef.on('child_added', function(data) {
-console.log("----"+data.val().lat);
-   myLatLng = {lat: data.val().lat, lng: data.val().long};
-         marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-
-
-});*/
-
-      }
-
-    var lng = [];
-
-
-	  function writeUserData() {
-  firebase.database().ref('users/').set({
-    "lat": 38.9434,
-    "long": -92.3277
-  });
-}
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap">
-    </script>
-  </body>
+    function writeUserData() {
+      firebase.database().ref('users/').set({
+        "lat": 38.9434,
+        "long": -92.3277
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap"></script>
+</body>
 </html>

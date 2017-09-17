@@ -1,214 +1,146 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Hot Spot</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+
+<head>
+  <meta charset="utf-8">
+  <title>Hot Spot</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel {
-        background-color: #fff;
-        border: 1px solid #999;
-        left: 25%;
-        padding: 5px;
-        position: absolute;
-        top: 10px;
-        z-index: 5;
-      }
-    </style>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #floating-panel {
+      position: absolute;
+      top: 10px;
+      left: 25%;
+      z-index: 5;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #999;
+      text-align: center;
+      font-family: 'Roboto', 'sans-serif';
+      line-height: 30px;
+      padding-left: 10px;
+    }
+
+    #floating-panel {
+      background-color: #fff;
+      border: 1px solid #999;
+      left: 25%;
+      padding: 5px;
+      position: absolute;
+      top: 10px;
+      z-index: 5;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
 
-</script>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>Starter Template - Materialize</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js '></script>
   <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 </head>
+
 <body>
-
-
-<nav class="green lighten-1" role="navigation">
+  <nav class="green lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Planet Vune</a>
       <ul class="right hide-on-med-and-down">
-<!--         <li><input id="search"><i class="material-icons">search</i></li> -->
-      </ul>
 
+      </ul>
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="vumeLocIn.html">Upload</a></li>
-            <li><a href="">Login</a></li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-            <li><a href="vumeLocIn.html">Upload</a></li>
-            <li><a href="">Login</a></li>
-        </ul>
+        <li><a href="vumeLocIn.html">Upload</a></li>
+        <li><a href="">Login</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="vumeLocIn.html">Upload</a></li>
+        <li><a href="">Login</a></li>
+      </ul>
     </div>
   </nav>
 
   </head>
 
-
-  <!--<progress value="0" max="100" id="uploader">0</progress>
-  <input type="file" value="upload" id="fileButton"/>-->
-
-
   <body>
-<!--   floating panel can go where ever -->
-    <!--<div id="floating-panel">
-      <button onclick="changeRadius()">Crime</button>
-      <button onclick="writeUserData()">Mumps</button>
-      <div id="slider"></div><input type="text" id="amount" readonly style="border:0; width:100%; height:10%">
-    </div>-->
-<!--     you should be able to put the map on any div -->
-
-
     <div id="map"></div>
     <script>
-    var config = {
-    apiKey: "AIzaSyDma41hyffvR2mc7EGxmSvPFnmuHppTW2k",
-    authDomain: "hot-spot-40dff.firebaseapp.com",
-    databaseURL: "https://hot-spot-40dff.firebaseio.com",
-    projectId: "hot-spot-40dff",
-    storageBucket: "hot-spot-40dff.appspot.com",
-    messagingSenderId: "1018402745301"
-  };
-  firebase.initializeApp(config);
-    //
-    /*var uploader = document.getElementById("uploader");
-    var fileButton = document.getElementById("fileButton");
-
-    fileButton.addEventListener('change', function(e) {
-      var file = e.target.files[0];
-
-      var storageRef = firebase.storage().ref('sweet_gifs/' + file.name);
-
-      var task = storageRef.put(file);
-
-      task.on('state_changed',
-
-        function progress(snapshot){
-          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          uploader.value = percentage;
-        },
-
-        function error(err) {
-
-        },
-
-        function complete(){
-
-        }
-        );
-    });*/
-    //
-
-      // This example requires the Visualization library. Include the libraries=visualization
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+      var config = {
+        apiKey: "AIzaSyDma41hyffvR2mc7EGxmSvPFnmuHppTW2k",
+        authDomain: "hot-spot-40dff.firebaseapp.com",
+        databaseURL: "https://hot-spot-40dff.firebaseio.com",
+        projectId: "hot-spot-40dff",
+        storageBucket: "hot-spot-40dff.appspot.com",
+        messagingSenderId: "1018402745301"
+      };
+      firebase.initializeApp(config);
 
       var map, heatmap, heatmap2;
 
-	function initMap() {
-		map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 16,
-			center: {lat: 38.9424, lng: -92.3277}
-		});
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: {
+            lat: 38.9424,
+            lng: -92.3277
+          }
+        });
 
-		var customMapTypeId = 'custom_style';
-		var customMapType = new google.maps.StyledMapType([
-		{
-			stylers: [
-				{hue: '#81F9FB'},
-				{visibility: 'simplified'},
-				{gamma: 0.3},
-				{weight: 0.20}
-			]
-		},
-		{
-			elementType: 'labels',
-			stylers: [{visibility: 'on'}]
-		},
-		{
-			featureType: 'water',
-			stylers: [{color: '#346FFF'}]
-		}
-		], {
-			name: 'Trippy'
-		});
+        var customMapTypeId = 'custom_style';
+        var customMapType = new google.maps.StyledMapType([{
+            stylers: [{ hue: '#81F9FB' }, { visibility: 'simplified' }, { gamma: 0.3 }, { weight: 0.20 } ] }, { elementType: 'labels', stylers: [{ visibility: 'on' }] }, { featureType: 'water', stylers: [{ color: '#346FFF' }] }
+        ], {
+          name: 'Trippy'
+        });
+        map.mapTypes.set(customMapTypeId, customMapType);
+        map.setMapTypeId(customMapTypeId);
 
-		map.mapTypes.set(customMapTypeId, customMapType);
-		map.setMapTypeId(customMapTypeId);
-
-
-
-		// tap to add pin to fb
-		// google.maps.event.addListener(map, 'click', function( event ){
-// 			firebase.database().ref().push().set({
-// 				"lat": event.latLng.lat(),
-// 				"long": event.latLng.lng()
-// 			});
-// 		});
-
-		// load from fb
-		var commentsRef = firebase.database().ref();
-		commentsRef.on('child_added', function(data) {
-			var myLatLng = {lat: data.val().lat, lng: data.val().long};
-			var marker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			title: 'Hello World!',
-			icon: 'oPin3.png'
-		});
-
-    google.maps.event.addListener(marker, 'click', function() {
-      // Put video here.
-      window.location.href = data.val().url;
-    });
-
-		});
-
-	}
+        // load from fb
+        var commentsRef = firebase.database().ref();
+        commentsRef.on('child_added', function (data) {
+          var myLatLng = {
+            lat: data.val().lat,
+            lng: data.val().long
+          };
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Watch Vune at this location',
+            icon: 'oPin3.png'
+          });
+          google.maps.event.addListener(marker, 'click', function () {
+            window.location.href = data.val().url;
+          });
+        });
+      }
 
     </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&libraries=visualization&callback=initMap"></script>
+
   </body>
+
 </html>

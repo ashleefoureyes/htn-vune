@@ -3,11 +3,13 @@
     <div class="content_wrapper">
       <div class="pure-g">
         <div class="pure-u-2-3">
-          <div class="video_wrapper">
-            <video controls>
-                <source src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
+          <div class="container">
+            <div class="video_wrapper">
+                <video controls>
+                    <source v-bind:src="videoSource" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
           </div>
         </div>
         <div class="pure-u-1-3">
@@ -23,11 +25,13 @@
 import 'vue-awesome/icons'
 import VideoItem from '@/components/VideoItem'
 import Icon from 'vue-awesome/components/Icon'
+import Vuex from 'vuex'
 
 export default {
   name: 'watch',
   data () {
     return {
+      videoSource: "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4",
       first_header_title: 'Recommended',
       second_header_title: 'Trending in Canada',
       third_header_title: 'Trending Worldwide',
@@ -47,9 +51,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .video_wrapper {
-    display: flex;    
-} .video_wrapper video{
-    flex-grow: 1;
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.video_wrapper video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+    padding-right: 42px;
+    margin-top: 10px;
 }
 
 .watch {
