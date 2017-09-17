@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="watch">
     <div class="content_wrapper">
       <h2><icon name="bolt" scale="1.2"></icon> {{ first_header_title }}</h2>
       <div class="pure-g">
@@ -23,7 +23,7 @@ import VideoItem from '@/components/VideoItem'
 import Icon from 'vue-awesome/components/Icon'
 
 export default {
-  name: 'main',
+  name: 'watch',
   data () {
     return {
       first_header_title: 'Your Feed',
@@ -32,11 +32,6 @@ export default {
       items: [
         { message: 'Foo' },
         { message: 'Bar' },
-        { message: 'Bar' },
-        { message: 'Bar' },
-        { message: 'Bar' },
-        { message: 'Bar' },
-        { message: 'Bar' }
       ]
     }
   },
@@ -49,7 +44,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.main {
+.watch {
   margin-top: 12px;
 }
 

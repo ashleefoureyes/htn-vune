@@ -1,10 +1,12 @@
 <template>
   <div class="videoitem">
-    <img src="../assets/thumbnails/1.jpg" class="logo">
-    <div class="vid_info">
-        <h2>{{ video_title }}</h2>
-        <p>{{ video_description }}</p>
-    </div>
+    <router-link to="/watch">
+        <img src="../assets/thumbnails/1.jpg" class="logo">
+        <div class="vid_info">
+            <h2>{{ video_title }}</h2>
+            <p>{{ video_description }}</p>
+        </div>
+    </router-link>
   </div>
 </template>
 
