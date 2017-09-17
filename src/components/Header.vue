@@ -1,6 +1,10 @@
 <template>
   <div class="appheader">
-    <div class="content_wrapper">
+    <!--<div class="content_wrapper">-->
+    <div class="hamburger_wrapper">
+        <icon name="bars" scale="1"></icon>
+    </div>
+    <div class="wrapper">
         <h1>VUNE</h1>
         <div class="right_menu">
             <a class="user a_upload" href="#">Upload</a>
@@ -9,15 +13,21 @@
         <!--<img src="../assets/logo.png" class="logo">-->
     </div>
   </div>
+  <!--</div>-->
 </template>
 
 <script>
+import Icon from 'vue-awesome/components/Icon'
+
 export default {
   name: 'appheader',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    'icon': Icon
   }
 }
 </script>
@@ -25,11 +35,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .appheader {
-    display: block;
+    display: flex;
     box-sizing: border-box;
     width: 100%;
     padding: 8px 0;
     background-color: #111;
+    box-shadow: 0 0 15px rgba(255, 255, 255, .05);
 }
 
 .right_menu {
@@ -58,6 +69,29 @@ a {
 } .a_auth:hover {
     background-color: rgba(88, 189, 255, .37);
     background-color: rgba(47, 247, 151, .37);
+}
+
+.hamburger_wrapper {
+    display: inline-block;
+    color: #e7e7e7;
+    margin: -8px 6px -8px 0;
+    min-width: 48px;
+    padding-right: 14px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+} .hamburger_wrapper svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+h1 svg {
+    position: relative;
+    top: 1px;
+    padding-right: 5px;
+    vertical-align: text-top;
 }
 
 h1 {
