@@ -1,15 +1,17 @@
 <template>
   <div class="watch">
     <div class="content_wrapper">
-      <h2><icon name="bolt" scale="1.2"></icon> {{ first_header_title }}</h2>
       <div class="pure-g">
-        <div class="pure-u-1-3">
-          <videoitem v-for="item in items" v-bind:key="item.message"></videoitem>
+        <div class="pure-u-2-3">
+          <div class="video_wrapper">
+            <video controls>
+                <source src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+          </div>
         </div>
         <div class="pure-u-1-3">
-          <videoitem v-for="item in items" v-bind:key="item.message"></videoitem>
-        </div>
-        <div class="pure-u-1-3">
+          <h2><icon name="bolt" scale="1.2"></icon> {{ first_header_title }}</h2>
           <videoitem v-for="item in items" v-bind:key="item.message"></videoitem>
         </div>
       </div>
@@ -26,7 +28,7 @@ export default {
   name: 'watch',
   data () {
     return {
-      first_header_title: 'Your Feed',
+      first_header_title: 'Recommended',
       second_header_title: 'Trending in Canada',
       third_header_title: 'Trending Worldwide',
       items: [
@@ -44,6 +46,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.video_wrapper {
+    display: flex;    
+} .video_wrapper video{
+    flex-grow: 1;
+}
+
 .watch {
   margin-top: 12px;
 }
